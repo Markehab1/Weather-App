@@ -1,0 +1,120 @@
+*{
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+body {
+  background: linear-gradient(to bottom, #71b7e6, #7359b6);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+}
+.container {
+  background-color: #ffffff;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 500px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  padding: 15px 0px;
+}
+
+.search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+}
+.search #searchBtn {
+  border-radius: 100%;
+  border: none;
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+  background-color: #71b7e638;
+}
+.search #searchBtn:hover {
+  background-color: #c0c0c092;
+}
+
+#cityInput {
+  outline: none;
+  border: none;
+  padding-left: 25px;
+  height: 40px;
+  font-size: 24px;
+  font-weight: 550;
+}
+#errorIcon {
+  width: 400px;
+  height: 400px;
+  margin-top: 20px;
+}
+
+.errorMessage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: none; 
+}
+.errorMessage p {
+  position: relative;
+  font-size: 20px;
+  font-weight: 600;
+  bottom: 40px;
+}
+.WeatherImgAndTemp {
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.WeatherImgAndTemp h1 {
+  font-size: 50px;
+  font-weight: 600;
+  margin-top: 15px;
+}
+
+.WeatherImgAndTemp p{
+  font-size: 18px;
+  font-weight: 600;
+  background-color: #71b7e638;
+}
+
+.WeatherImgAndTemp img{
+  height: 250px;
+  width: 250px;
+  margin: 50px 0 20px 0;
+}
+
+.iconAndtype {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  font-weight: 600;
+  font-size: 20px;
+  margin-top: 40px;
+}
+
+.iconAndtype i {
+  padding-right: 10px;
+  font-size: 26px;
+}
+
+.WeatherInfo {
+  display: flex;
+  /* width: 100%; */
+  justify-content: center;
+  gap: 130px;
+  flex-direction: row;
+  margin-bottom: 30px;
+}
+
+.allData {
+  /* display:none; */
+}

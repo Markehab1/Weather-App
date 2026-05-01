@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="search">
+      <div><i class="fa-solid fa-location-dot" style="font-size: 26px;"></i>
+      <input type="text" id="cityInput" placeholder="Enter city name">
+      </div>
+      <button id="searchBtn"><i class="fa-solid fa-magnifying-glass" style="font-size: 18px;"></i></button>
+    </div>
+    <div class="errorMessage">
+      <img src="Images/Error.webp" alt="Weather Icon" id="errorIcon">
+      <p>Invalid Location :/</p>
+    </div>
+    <div class="allData">
+      <div class="WeatherImgAndTemp">
+        <img src="Images/sun.png">
+        <h1 id="temp">10°C</h1>
+        <p id="tempDescription">Cloudy</p>
+      </div>
+      <div class="WeatherInfo">
+        <div class="iconAndtype">
+          <i class="fa-solid fa-water"></i>
+          <div id="humidity">
+            <p class="percentage">90%</p>
+            <p>Humidity</p>
+          </div>
+        </div>
+        <div class="iconAndtype">
+          <i class="fa-solid fa-wind"></i>
+          <div id="windSpeed">
+            <p class="percentage">10 Km/h</p>
+            <p>Wind Speed</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>
