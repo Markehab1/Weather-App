@@ -23,8 +23,8 @@ body {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   padding: 30px 50px;
   user-select: none;
-  max-height: 150px;           /* ← add this */
-  overflow: hidden;            /* ← add this */
+  max-height: 150px;
+  overflow: hidden;
   transition: max-height 0.8s ease;  
   position: relative;
   animation: slideIn 1s ease forwards;
@@ -50,7 +50,6 @@ body {
 
 #cityInput {
   outline: none;
-  /* border: none; */
   padding-left: 15px;
   height: 40px;
   font-size: 24px;
@@ -70,14 +69,14 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  position: absolute;   /* ← add this */
-  background-color: #ffffff;  /* ← add this */
-  width: 100%;          /* ← add this */
-  height: calc(100% - 80px);         /* ← add this */
-  top: 80px;               /* ← add this */
-  left: 0;              /* ← add this */
-  border-radius: 20px;  /* ← add this */
-  z-index: 2;           /* ← add this */
+  position: absolute;
+  background-color: #ffffff;
+  width: 100%;
+  height: calc(100% - 80px);
+  top: 80px;
+  left: 0;
+  border-radius: 20px;
+  z-index: 2;
 }
 
 .errorMessage p {
@@ -244,4 +243,55 @@ body {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.1s ease; 
+}
+
+.weather-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to bottom, #71b7e622, #2c536473);
+  backdrop-filter: blur(12px); 
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0px -5px 20px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 40px; 
+}
+
+.footer-content p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0; 
+}
+
+.creator-name {
+  color: #00e5ff;
+  font-weight: 800;
+  font-size: 16px;
+  display: inline-block;
+  cursor: pointer;
+  animation: floatAndGlow 1s ease-in-out infinite alternate;
+  transition: all 0.3s ease;
+}
+
+.creator-name:hover {
+  animation-play-state: paused; 
+  color: #ffffff;
+  transform: scale(1.15) translateY(-2px);
+  text-shadow: 0 0 15px #00e5ff, 0 0 30px #0051ff;
+}
+
+@keyframes floatAndGlow {
+  0% {
+    text-shadow: 0 0 5px #00e5ff;
+    transform: translateY(0px);
+  }
+  100% {
+    text-shadow: 0 0 15px #00e5ff, 0 0 25px #0077ff;
+    transform: translateY(-4px);
+  }
 }
