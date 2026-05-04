@@ -1,7 +1,6 @@
 *{
   margin: 0;
   padding: 0;
-  user-select: none;
   box-sizing: border-box;
 }
 body {
@@ -23,6 +22,12 @@ body {
   border-radius: 20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   padding: 30px 50px;
+  user-select: none;
+  max-height: 150px;           /* ← add this */
+  overflow: hidden;            /* ← add this */
+  transition: max-height 0.8s ease;  
+  position: relative;
+  animation: slideIn 1s ease forwards;
 }
 
 .search {
@@ -49,7 +54,7 @@ body {
   padding-left: 15px;
   height: 40px;
   font-size: 24px;
-  font-weight: 550;
+  font-weight: 600;
   border-radius: 100px;
   margin-left: 5px;
   border: 1px solid black;
@@ -61,12 +66,20 @@ body {
 }
 
 .errorMessage {
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  display: none; 
+  position: absolute;   /* ← add this */
+  background-color: #ffffff;  /* ← add this */
+  width: 100%;          /* ← add this */
+  height: calc(100% - 80px);         /* ← add this */
+  top: 80px;               /* ← add this */
+  left: 0;              /* ← add this */
+  border-radius: 20px;  /* ← add this */
+  z-index: 2;           /* ← add this */
 }
+
 .errorMessage p {
   position: relative;
   font-size: 20px;
@@ -122,6 +135,7 @@ body {
 .allData {
   width: 100%;
   display:none;
+  transition: opacity 0.3s ease;
 }
 
 .percentage {
@@ -152,7 +166,7 @@ body {
   }
   #cityInput {
   font-size: 16px;
-  font-weight: 550;
+  font-weight: 600;
   border-radius: 100px;
   margin-left: 5px;
 }
@@ -204,4 +218,30 @@ body {
   font-size: 26px;
 }
 
+}
+
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.allData.animate {
+  animation: slideIn 1s ease forwards;
+}
+
+
+.container.expanded {
+  max-height: 800px;
+}
+.allData.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.1s ease; 
 }
