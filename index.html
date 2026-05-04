@@ -10,7 +10,7 @@
 <body>
   <div class="container">
     <div class="search">
-      <div><i class="fa-solid fa-location-dot" style="font-size: 26px;"></i>
+      <div><i id="locationIcon" class="fa-solid fa-location-dot" style="font-size: 26px;"></i>
       <input type="text" id="cityInput" placeholder="Enter city name">
       </div>
       <button id="searchBtn"><i class="fa-solid fa-magnifying-glass" style="font-size: 18px;"></i></button>
@@ -20,24 +20,24 @@
       <p>Invalid Location :/</p>
     </div>
     <div class="allData">
-      <div class="WeatherImgAndTemp">
+      <div class="weatherImgAndTemp">
         <img src="Images/sun.png">
         <h1 id="temp">10°C</h1>
         <p id="tempDescription">Cloudy</p>
       </div>
-      <div class="WeatherInfo">
+      <div class="weatherInfo">
         <div class="iconAndtype">
           <i class="fa-solid fa-water"></i>
           <div id="humidity">
             <p class="percentage">90%</p>
-            <p>Humidity</p>
+            <p class="labelone">Humidity</p>
           </div>
         </div>
         <div class="iconAndtype">
           <i class="fa-solid fa-wind"></i>
           <div id="windSpeed">
             <p class="percentage">10 Km/h</p>
-            <p>Wind Speed</p>
+            <p class="labeltwo">Wind Speed</p>
           </div>
         </div>
       </div>
