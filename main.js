@@ -11,6 +11,11 @@ const tempDescription = document.getElementById("tempDescription");
 const humidityText = document.querySelector("#humidity .percentage");
 const windSpeedText = document.querySelector("#windSpeed .percentage");
 const container = document.querySelector(".container");
+const countryText  = document.getElementById("countryName");
+const clear = document.getElementById("clear");
+const errp = document.getElementById("errp");
+
+
 
 async function checkWeather(city) {
   errorMessage.style.display = "none";
@@ -33,6 +38,11 @@ async function checkWeather(city) {
   humidityText.innerHTML = data.main.humidity + "%";
   windSpeedText.innerHTML = data.wind.speed + " Km/h";
 
+const countryCode = data.sys.country;
+const regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
+const countryName = regionNames.of(countryCode);
+countryText.innerHTML = countryName;
+
   const condition = data.weather[0].main;
   if (condition == "Clouds") { weatherImg.src = "Images/clouds.png"; }
   else if (condition == "Clear") { weatherImg.src = "Images/sun.png"; }
@@ -50,7 +60,13 @@ async function checkWeather(city) {
 }
 
 searchBtn.addEventListener("click", () => {
+  if (cityInput.value == ""){
+    errp.classList.remove("hide");
+  }
+    else { 
   checkWeather(cityInput.value.trim());
+  errp.classList.add("hide");
+  }
 });
 
 cityInput.addEventListener("keypress", (e) => {
@@ -58,3 +74,21 @@ cityInput.addEventListener("keypress", (e) => {
     checkWeather(cityInput.value.trim());
   }
 });
+
+cityInput.addEventListener("keypress", () => {
+  errp.classList.add("hide");
+})
+
+clear.addEventListener("click", () => {
+    cityInput.value = "";
+  container.classList.remove("expanded");
+  setTimeout(() => {
+    allData.style.display = "none";
+    errorMessage.style.display = "none";
+  }, 500);
+
+})
+
+// زرار clear
+// اظهار الدولة مع المدينة
+// عرض الوقت الحالي

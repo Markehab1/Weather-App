@@ -4,12 +4,14 @@
   box-sizing: border-box;
 }
 body {
-  background: linear-gradient(to bottom, #71b7e6, #7359b6);
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: 'Poppins', sans-serif;
+  background: linear-gradient(270deg, #71b7e6, #7359b6, #00e5ff);
+  background-size: 600% 600%;
+  animation: moveBg 15s ease infinite;
 }
 .container {
   background-color: #ffffff;
@@ -28,6 +30,7 @@ body {
   transition: max-height 0.8s ease;  
   position: relative;
   animation: slideIn 1s ease forwards;
+  top:-15px;
 }
 
 .search {
@@ -53,11 +56,18 @@ body {
   padding-left: 15px;
   height: 40px;
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 500;
   border-radius: 100px;
   margin-left: 5px;
   border: 1px solid black;
 }
+
+#countryName {
+  font-size:35px;
+  background-color: #71b7e638;
+  border-radius:15px;
+}
+
 #errorIcon {
   width: 400px;
   height: 400px;
@@ -104,9 +114,9 @@ body {
 }
 
 .weatherImgAndTemp img{
-  height: 250px;
-  width: 250px;
-  margin: 50px 0 20px 0;
+  height: 230px;
+  width: 230px;
+  margin: 20px 0 20px 0;
 }
 
 .iconAndtype {
@@ -159,7 +169,7 @@ body {
     padding: 30px 50px;
   }
 }
-@media (max-width: 523px) {
+@media (max-width: 533px) {
   .container {
     padding: 25px 40px;
   }
@@ -168,6 +178,7 @@ body {
   font-weight: 600;
   border-radius: 100px;
   margin-left: 5px;
+  max-width:80%;
 }
 .weatherImgAndTemp img{
   height: 200px;
@@ -200,8 +211,8 @@ body {
 }
 
 .weatherImgAndTemp img{
-  height: 170px;
-  width: 170px;
+  height: 150px;
+  width: 150px;
   margin-top: 30px;
 }
 
@@ -258,12 +269,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 40px; 
+  min-height: 30px; 
 }
 
 .footer-content p {
   color: rgba(255, 255, 255, 0.85);
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
   margin: 0; 
 }
@@ -271,7 +282,7 @@ body {
 .creator-name {
   color: #00e5ff;
   font-weight: 800;
-  font-size: 16px;
+  font-size: 14px;
   display: inline-block;
   cursor: pointer;
   animation: floatAndGlow 1s ease-in-out infinite alternate;
@@ -294,4 +305,38 @@ body {
     text-shadow: 0 0 15px #00e5ff, 0 0 25px #0077ff;
     transform: translateY(-4px);
   }
+}
+
+@keyframes moveBg {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hide {
+  display : none;
+}
+#errp {
+  color:rgb(255, 0, 0);
+  font-weight:bold;
+  font-size:14px;
+}
+
+#clear {
+  width : 40px;
+  height : 40px;
+  border-radius: 120px;
+  border:none;
+  background-color: #71b7e638;
+  cursor:pointer;
+}
+#clear:hover {
+  background-color: #c0c0c092;
+}
+
+
+.fadeOut {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
 }

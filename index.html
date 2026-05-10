@@ -14,15 +14,18 @@
     <div class="search">
       <div><i id="locationIcon" class="fa-solid fa-location-dot" style="font-size: 26px;"></i>
       <input type="text" id="cityInput" placeholder="Enter city name">
-      </div>
+    </div>
+    <button id="clear">X</button>
       <button id="searchBtn"><i class="fa-solid fa-magnifying-glass" style="font-size: 18px;"></i></button>
     </div>
+      <p id="errp" class="hide">Please Enter A City Name</p>
     <div class="errorMessage">
       <img src="Images/Error.webp" alt="Weather Icon" id="errorIcon">
       <p>Invalid Location :/</p>
     </div>
     <div class="allData">
       <div class="weatherImgAndTemp">
+        <h1 id="countryName"></h1>
         <img src="Images/sun.png">
         <h1 id="temp">10°C</h1>
         <p id="tempDescription">Cloudy</p>
