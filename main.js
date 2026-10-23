@@ -48,11 +48,25 @@ async function checkWeather(city) {
   loading.classList.add("hide");
 
   if (!response.ok) {
-    showError("Invalid Location :/");
+    if (response.status === 404) {
+      showError("Invalid Location :/");
+    } else if (response.status === 401) {
+      showError("API key problem. Please check your key.");
+    } else if (response.status === 429) {
+      showError("Too many requests. Try again in a minute.");
+    } else {
+      showError("Something went wrong. Please try again.");
+    }
     return;
   }
 
-  const data = await response.json();
+  let data;
+  try {
+    data = await response.json();
+  } catch (error) {
+    showError("Something went wrong. Please try again.");
+    return;
+  }
 
   temp.innerHTML = Math.round(data.main.temp) + "°C";
   tempDescription.innerHTML = data.weather[0].description;
@@ -77,25 +91,25 @@ countryText.innerHTML = countryName;
   openResults();
 }
 
-searchBtn.addEventListener("click", () => {
-  if (cityInput.value == ""){
-    errp.classList.remove("hide");
+function search() {
+  const city = cityInput.value.trim();
+  if (city === "") {
+    errp.classList.add("show");
+    return;
   }
-    else { 
-  checkWeather(cityInput.value.trim());
-  errp.classList.add("hide");
-  }
-});
+  errp.classList.remove("show");
+  checkWeather(city);
+}
+
+searchBtn.addEventListener("click", search);
 
 cityInput.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
-    checkWeather(cityInput.value.trim());
+    search();
+  } else {
+    errp.classList.remove("show");
   }
 });
-
-cityInput.addEventListener("keypress", () => {
-  errp.classList.add("hide");
-})
 
 clear.addEventListener("click", () => {
     cityInput.value = "";
