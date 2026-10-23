@@ -18,6 +18,7 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -40,6 +41,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
+  min-width: 0;
   max-width: 440px;
   border-radius: 24px;
   box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 12px 32px rgba(16, 24, 40, 0.08);
@@ -57,6 +59,7 @@ body {
 
 .inputWrap {
   flex: 1;
+  min-width: 0;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -81,6 +84,7 @@ body {
 
 #cityInput {
   flex: 1;
+  width: 100%;
   min-width: 0;
   border: none;
   outline: none;
