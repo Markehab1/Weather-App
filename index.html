@@ -12,16 +12,19 @@
 <body>
   <div class="container">
     <div class="search">
-      <div><i id="locationIcon" class="fa-solid fa-location-dot" style="font-size: 26px;"></i>
+      <div class="inputWrap"><i id="locationIcon" class="fa-solid fa-location-dot"></i>
       <input type="text" id="cityInput" placeholder="Enter city name">
-    </div>
-    <button id="clear">X</button>
-      <button id="searchBtn"><i class="fa-solid fa-magnifying-glass" style="font-size: 18px;"></i></button>
+  </div>
+    <button id="clear" aria-label="Clear"><i class="fa-solid fa-xmark"></i></button>
+      <button id="searchBtn" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
     </div>
       <p id="errp" class="hide">Please Enter A City Name</p>
+      <p id="loading" class="hide"><i class="fa-solid fa-spinner fa-spin"></i> Loading weather...</p>
+    <div class="results">
+    <div class="resultsInner">
     <div class="errorMessage">
       <img src="Images/Error.webp" alt="Weather Icon" id="errorIcon">
-      <p>Invalid Location :/</p>
+      <p id="errorText">Invalid Location :/</p>
     </div>
     <div class="allData">
       <div class="weatherImgAndTemp">
@@ -47,10 +50,12 @@
         </div>
       </div>
     </div>
+    </div>
+    </div>
   </div>
   <footer class="weather-footer">
   <div class="footer-content">
-    <p>Created By <span class="creator-name">Mark Ehab</span></p>
+    <p>Created By <a class="creator-name" href="https://www.linkedin.com/in/mark-ehab-453519389/" target="_blank" rel="noopener noreferrer">Mark Ehab</a></p>
   </div>
 </footer>
   <script src="main.js"></script>

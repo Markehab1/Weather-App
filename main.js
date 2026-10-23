@@ -1,4 +1,4 @@
-const apiKey = "57e5cdf0f4bb9dd6fe91f238c0d4c748";
+const apiKey = "3595ae52e051e29f9b5c4eb04dc03f82";
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 
 const cityInput = document.getElementById("cityInput");
@@ -14,20 +14,41 @@ const container = document.querySelector(".container");
 const countryText  = document.getElementById("countryName");
 const clear = document.getElementById("clear");
 const errp = document.getElementById("errp");
+const loading = document.getElementById("loading");
+const errorText = document.getElementById("errorText");
+const resultsInner = document.querySelector(".resultsInner");
 
 
+function openResults() {
+  container.classList.add("expanded");
+  resultsInner.classList.remove("fadeIn");
+  void resultsInner.offsetWidth;
+  resultsInner.classList.add("fadeIn");
+}
+
+function showError(message) {
+  errorText.textContent = message;
+  allData.style.display = "none";
+  errorMessage.style.display = "flex";
+  openResults();
+}
 
 async function checkWeather(city) {
-  errorMessage.style.display = "none";
-  const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+  loading.classList.remove("hide");
 
-  if (response.status == 404) {
-    allData.classList.add("hidden");
-      setTimeout(() => {
-        allData.style.display = "block";
-      container.classList.add("expanded");
-      errorMessage.style.display = "flex";} ,100)
-      
+  let response;
+  try {
+    response = await fetch(apiUrl + encodeURIComponent(city) + `&appid=${apiKey}`);
+  } catch (error) {
+    loading.classList.add("hide");
+    showError("No internet connection. Please check your connection and try again.");
+    return;
+  }
+
+  loading.classList.add("hide");
+
+  if (!response.ok) {
+    showError("Invalid Location :/");
     return;
   }
 
@@ -36,7 +57,7 @@ async function checkWeather(city) {
   temp.innerHTML = Math.round(data.main.temp) + "°C";
   tempDescription.innerHTML = data.weather[0].description;
   humidityText.innerHTML = data.main.humidity + "%";
-  windSpeedText.innerHTML = data.wind.speed + " Km/h";
+  windSpeedText.innerHTML = Math.round(data.wind.speed * 3.6) + " Km/h";
 
 const countryCode = data.sys.country;
 const regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
@@ -51,12 +72,9 @@ countryText.innerHTML = countryName;
   else if (condition == "Mist") { weatherImg.src = "Images/mist.png"; }
   else if (condition == "Snow") { weatherImg.src = "Images/snow.png"; }
 
-  allData.classList.remove("hidden");
+  errorMessage.style.display = "none";
   allData.style.display = "block";
-  container.classList.add("expanded");
-  allData.classList.remove("animate");
-  void allData.offsetWidth;
-  allData.classList.add("animate");
+  openResults();
 }
 
 searchBtn.addEventListener("click", () => {
@@ -85,10 +103,6 @@ clear.addEventListener("click", () => {
   setTimeout(() => {
     allData.style.display = "none";
     errorMessage.style.display = "none";
-  }, 500);
+  }, 400);
 
-})
-
-// زرار clear
-// اظهار الدولة مع المدينة
-// عرض الوقت الحالي
+}) 
