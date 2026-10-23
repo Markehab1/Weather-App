@@ -16,12 +16,19 @@
   box-sizing: border-box;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 24px 16px 64px;
+  gap: 20px;
+  padding: max(24px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
   font-family: 'Poppins', sans-serif;
   background: var(--bg);
   color: var(--text);
@@ -188,6 +195,8 @@ body {
 }
 
 #countryName {
+  max-width: 100%;
+  overflow-wrap: anywhere;
   font-size: 15px;
   font-weight: 600;
   color: var(--muted);
@@ -227,6 +236,7 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
+  min-width: 0;
   padding: 14px 16px;
   background: var(--soft);
   border-radius: 16px;
@@ -251,10 +261,6 @@ body {
 
 /*---------------------- Footer ------------------ */
 .weather-footer {
-  position: fixed;
-  bottom: 16px;
-  left: 0;
-  right: 0;
   text-align: center;
   font-size: 13px;
   color: var(--muted);
@@ -321,5 +327,110 @@ body {
   .iconAndtype {
     padding: 12px;
     gap: 8px;
+  }
+}
+
+/*---------------------- Very narrow phones ------------------ */
+@media (max-width: 340px) {
+  .weatherInfo {
+    grid-template-columns: 1fr;
+  }
+  #temp {
+    font-size: 42px;
+  }
+}
+
+/*---------------------- Tablets ------------------ */
+@media (min-width: 640px) {
+  .container {
+    max-width: 480px;
+    padding: 28px;
+  }
+  #temp {
+    font-size: 64px;
+  }
+  .weatherImgAndTemp img {
+    width: 170px;
+    height: 170px;
+  }
+}
+
+/*---------------------- Laptops and large screens ------------------ */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 520px;
+    padding: 32px;
+  }
+  .inputWrap,
+  #clear,
+  #searchBtn {
+    height: 52px;
+  }
+  #clear,
+  #searchBtn {
+    width: 52px;
+  }
+  #temp {
+    font-size: 72px;
+  }
+  .weatherImgAndTemp img {
+    width: 190px;
+    height: 190px;
+  }
+  .percentage {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .container {
+    max-width: 600px;
+  }
+}
+
+/*---------------------- Short screens (phones turned sideways) ------------------ */
+@media (max-height: 520px) {
+  body {
+    justify-content: flex-start;
+    padding-top: 16px;
+    gap: 12px;
+  }
+  .allData {
+    padding-top: 14px;
+  }
+  .weatherImgAndTemp img {
+    width: 80px;
+    height: 80px;
+    margin: 8px 0 4px;
+  }
+  #temp {
+    font-size: 40px;
+  }
+  .weatherInfo {
+    margin-top: 14px;
+  }
+  #errorIcon {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+/*---------------------- Touch screens: no sticky hover ------------------ */
+@media (hover: none) {
+  #clear:hover {
+    background: var(--soft);
+  }
+  #searchBtn:hover {
+    background: var(--accent);
+  }
+}
+
+/*---------------------- Respect "reduce motion" ------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }
