@@ -16,6 +16,17 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
+  <!-- Used in dark mode: finds the very dark pixels of an icon and paints them white. -->
+  <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+    <filter id="whiteOutlines" color-interpolation-filters="sRGB">
+      <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  -1 -1 -1 0 1.4" result="darkPixels" />
+      <feComposite in="darkPixels" in2="SourceAlpha" operator="in" result="lines" />
+      <feMerge>
+        <feMergeNode in="SourceGraphic" />
+        <feMergeNode in="lines" />
+      </feMerge>
+    </filter>
+  </svg>
   <div class="container">
     <div class="search">
       <div class="inputWrap"><i id="locationIcon" class="fa-solid fa-location-dot"></i>

@@ -82,7 +82,7 @@ countryText.innerHTML = countryName;
   if (condition == "Clouds") { weatherImg.src = "Images/clouds.png"; }
   else if (condition == "Clear") { weatherImg.src = "Images/sun.png"; }
   else if (condition == "Rain") { weatherImg.src = "Images/rain.png"; }
-  else if (condition == "Drizzle") { weatherImg.src = "Images/drizzle.png"; }
+  else if (condition == "Drizzle") { weatherImg.src = "Images/rain.png"; }
   else if (condition == "Mist") { weatherImg.src = "Images/mist.png"; }
   else if (condition == "Snow") { weatherImg.src = "Images/snow.png"; }
 

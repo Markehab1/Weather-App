@@ -340,12 +340,14 @@ body {
   outline-offset: 2px;
 }
 
-/* Some weather icons have black outlines, so they sit on a light circle in dark mode. */
+/* Dark mode icons: #whiteOutlines (in index.html) turns only the black lines white,
+   so every other color stays the same. The glow makes the icon feel lit up. */
 [data-theme="dark"] .weatherImgAndTemp img,
 [data-theme="dark"] #errorIcon {
-  padding: 14px;
-  background: #e2e8f0;
-  border-radius: 50%;
+  filter: url(#whiteOutlines) drop-shadow(0 0 22px rgba(96, 165, 250, 0.4));
+}
+[data-theme="dark"] .weatherImgAndTemp img[src*="sun"] {
+  filter: drop-shadow(0 0 26px rgba(250, 204, 21, 0.45));
 }
 
 /*---------------------- Helpers & animations ------------------ */
