@@ -111,6 +111,24 @@ cityInput.addEventListener("keypress", (e) => {
   }
 });
 
+const themeBtn = document.getElementById("themeBtn");
+const themeIcon = themeBtn.querySelector("i");
+
+function showThemeButton() {
+  const isDark = document.documentElement.dataset.theme === "dark";
+  themeIcon.className = isDark ? "fa-solid fa-sun" : "fa-solid fa-moon";
+  themeBtn.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+}
+
+themeBtn.addEventListener("click", () => {
+  const theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  document.documentElement.dataset.theme = theme;
+  localStorage.setItem("weather.theme", theme);
+  showThemeButton();
+});
+
+showThemeButton();
+
 clear.addEventListener("click", () => {
     cityInput.value = "";
   container.classList.remove("expanded");

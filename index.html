@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Weather App</title>
+  <script>
+    // Runs before the page is drawn, so it never flashes the wrong theme.
+    document.documentElement.dataset.theme =
+      localStorage.getItem("weather.theme") ||
+      (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  </script>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="main.css">
@@ -56,6 +62,7 @@
   <footer class="weather-footer">
   <div class="footer-content">
     <p>Created By <a class="creator-name" href="https://www.linkedin.com/in/mark-ehab-453519389/" target="_blank" rel="noopener noreferrer">Mark Ehab</a></p>
+    <button type="button" id="themeBtn" aria-label="Switch theme"><i class="fa-solid fa-moon" aria-hidden="true"></i></button>
   </div>
 </footer>
   <script src="main.js"></script>

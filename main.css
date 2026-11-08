@@ -8,6 +8,25 @@
   --accent: #3b82f6;    /* search button + icons */
   --accent-dark: #2563eb;
   --danger: #dc2626;
+  --soft-hover: #e5e7eb;   /* clear button on hover */
+  --focus-border: #d1d5db; /* search box when focused */
+  --focus-ring: rgba(16, 24, 40, 0.05);
+  --shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 12px 32px rgba(16, 24, 40, 0.08);
+}
+
+/*---------------------- Dark theme: same names, new values ------------------ */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0f172a;
+  --card: #1e293b;
+  --soft: #293548;
+  --text: #f1f5f9;
+  --muted: #a8b3c4;
+  --danger: #f87171;
+  --soft-hover: #364459;
+  --focus-border: #475569;
+  --focus-ring: rgba(148, 163, 184, 0.15);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px rgba(0, 0, 0, 0.35);
 }
 
 *{
@@ -44,7 +63,7 @@ body {
   min-width: 0;
   max-width: 440px;
   border-radius: 24px;
-  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 12px 32px rgba(16, 24, 40, 0.08);
+  box-shadow: var(--shadow);
   padding: 24px;
   user-select: none;
   animation: slideIn 0.5s ease both;
@@ -73,8 +92,8 @@ body {
 
 .inputWrap:focus-within {
   background: var(--card);
-  border-color: #d1d5db;
-  box-shadow: 0 0 0 4px rgba(16, 24, 40, 0.05);
+  border-color: var(--focus-border);
+  box-shadow: 0 0 0 4px var(--focus-ring);
 }
 
 #locationIcon {
@@ -117,7 +136,7 @@ body {
   color: var(--muted);
 }
 #clear:hover {
-  background: #e5e7eb;
+  background: var(--soft-hover);
 }
 
 #searchBtn {
@@ -289,6 +308,44 @@ body {
 }
 .creator-name:hover {
   color: var(--accent);
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+/*---------------------- Theme button ------------------ */
+#themeBtn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+  color: var(--muted);
+  background: var(--card);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+#themeBtn:hover {
+  color: var(--accent);
+}
+#themeBtn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Some weather icons have black outlines, so they sit on a light circle in dark mode. */
+[data-theme="dark"] .weatherImgAndTemp img,
+[data-theme="dark"] #errorIcon {
+  padding: 14px;
+  background: #e2e8f0;
+  border-radius: 50%;
 }
 
 /*---------------------- Helpers & animations ------------------ */
